@@ -2,8 +2,6 @@
 
 更新日期：2026-08-31
 
-本文件延伸自[醫療影像中的 Diffusion Model 應用](./df_app_on_mechanism.md)。
-
 ## 篩選條件
 
 - 模型必須在分割、重建或異常定位的任務推論中實際執行 diffusion／reverse diffusion；只用 Stable Diffusion VAE、只拿 diffusion 產生訓練資料，或只載入 diffusion backbone initialization 均不算。
