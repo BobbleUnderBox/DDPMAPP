@@ -240,3 +240,85 @@ PSNR／SSIM：整體影像品質。Measurement residual：是否符合原始量�
 
 回顧也警告，heatmap 即使看起來合理，也可能不穩定或不忠於模型。
 [連結二](https://www.sciencedirect.com/science/article/pii/S3050577126000290?utm_source=chatgpt.com)
+
+## 開源與非商用授權盤點
+
+> 查核日期：2026-08-31。授權可能變更，實際採用前仍應重新確認官方 repository、模型卡及資料集條款。
+>
+> 本節分開判斷「方法概念」、「作者程式」、「模型權重／checkpoint」及「資料集」。論文或 repository 公開可讀，不代表所有相關資產都取得相同授權。
+
+### 快速結論
+
+- 可以直接以開源程式為基礎使用：Saliency／feature attribution、SHAP、Diffusion Explainer、DAAM、Attend-and-Excite、TCAV、D-TRAK，以及 Favero 的 class-conditional medical diffusion classifier 程式。
+- 可以自行實作後開源：Hallucination Index、measurement-consistency residual、posterior variance、prototype／example-based explanation，以及各種 fidelity、robustness、刪除測試與臨床驗證流程。
+- 不應直接複製作者程式：DF-RISE／DF-CAM、I2AM、memorization token attribution、DAS 與官方 DPS repository，因為查核時沒有明確 LICENSE。
+- HalluGen／SHAFE 的 LICENSE 看似 MIT，但檔案仍含未解決的 Git merge conflict 與互相衝突的版權人；在作者修正或書面確認前，不應直接複製或再散布。
+- 「僅限非商用」不是缺少授權時的通行證；沒有 LICENSE 的 repository，即使只做研究或非商用，也不能推定可以複製、修改或再散布。
+
+### 可直接採用的開源程式
+
+| 方法 | 官方資源與授權 | 可執行範圍與注意事項 |
+| --- | --- | --- |
+| Grad-CAM、Integrated Gradients、LRP、Occlusion | [Captum：BSD-3-Clause](https://github.com/meta-pytorch/captum/blob/master/LICENSE)；[pytorch-grad-cam：MIT](https://github.com/jacobgil/pytorch-grad-cam) | 可使用、修改、商用及再散布；須保留原授權與版權聲明。若希望維持 permissive dependency，可優先採用 Captum。 |
+| SHAP | [SHAP：MIT](https://github.com/shap/shap) | 可納入 MIT 或 Apache-2.0 專案；background/reference data 的使用權仍須另查。 |
+| Posterior uncertainty／Bayesian MRI | [SPRECO](https://github.com/mrirecon/spreco) 採 BSD、Apache 與 MIT 的組合授權；替代實作 [score-MRI：Apache-2.0](https://github.com/hyungjin-chung/score-MRI) | 程式可使用及修改。公開的 MRI priors、Zenodo 模型和資料未見清楚的獨立授權，不宜與程式一起再散布；最安全做法是以有權使用的資料自行訓練。 |
+| Measurement-consistency residual、posterior variance、credible interval | 通用數學與統計流程 | 可獨立實作並以 MIT／Apache-2.0 發布。若需要現成 MRI 程式，可使用 Apache-2.0 的 score-MRI；不必複製無 LICENSE 的官方 DPS repository。 |
+| Class-conditional diffusion／反事實影像 | [Favero 等人的官方程式：MIT](https://github.com/faverogian/med-diffusion-classifier) | 程式可使用、修改及商用；Google Drive checkpoint 沒有獨立模型授權，CheXpert、ISIC 等訓練資料亦有各自條款，因此不要把權重或資料直接打包進開源發行版。 |
+| Diffusion Explainer | [官方程式：MIT](https://github.com/poloclub/diffusion-explainer) | 視覺化工具程式可修改及商用；所載入的 Stable Diffusion 權重另依模型授權。 |
+| DAAM | [官方程式：MIT](https://github.com/castorini/daam) | DAAM 程式可使用及再散布；底層 Stable Diffusion／SDXL checkpoint 必須分開審核。 |
+| Attend-and-Excite | [官方程式：MIT](https://github.com/yuval-alaluf/Attend-and-Excite/blob/main/LICENSE) | 方法程式可使用及再散布；底層模型權重另計。 |
+| Concept-based explanation／TCAV | [TensorFlow TCAV：Apache-2.0](https://github.com/tensorflow/tcav) | 可用於開源與商業專案；概念範例、random sets 與醫療標註資料的授權另計。 |
+| D-TRAK | [官方程式：MIT](https://github.com/sail-sg/D-TRAK/blob/main/LICENSE) | 程式可使用、修改及商用；候選訓練資料與 diffusion checkpoint 另行審核。 |
+| Prototype／example-based explanation、最近鄰檢索、fidelity／deletion tests、組合式臨床驗證 | 通用方法與工作流程 | 可自行實作並開源。Prototype bank、embedding model、病例 metadata 與醫療資料必須分開取得使用及再散布權。 |
+
+### 只能獨立重作或先取得作者許可
+
+以下項目可依論文理解方法後進行 clean-room implementation，也就是不複製作者程式、程式結構、圖表或其他受著作權保護的表達，再為自己的程式選擇授權。此判定只處理著作權層面，仍不等於完成專利查核。
+
+| 方法／實作 | 查核結果 | 建議 |
+| --- | --- | --- |
+| Hallucination Index | [論文](https://pmc.ncbi.nlm.nih.gov/articles/PMC11956116/)公開公式，但未找到有明確授權的官方程式。 | 可依公式獨立重寫並開源；引用原論文，不要假設存在可自由重用的作者程式。 |
+| DF-RISE、DF-CAM、DF-LIME、exponential timestep | [官方 X-Diffusion repository](https://github.com/ian-jihoonpark/X-Diffusion) 查核時沒有 LICENSE。 | Repository 公開只代表可閱讀；不要直接複製。可依[論文](https://arxiv.org/abs/2402.10404) clean-room 重作，或向作者取得書面許可。 |
+| I2AM | [官方 repository](https://github.com/qkrwnstj306/I2AM) 查核時沒有 LICENSE。 | 不可推定研究或非商用使用已獲授權；應取得作者許可，或自行重新實作並改用授權相容的模型與資料。 |
+| Memorization token attribution | [官方 repository](https://github.com/YuxinWenRick/diffusion_memorization) 沒有 LICENSE；附帶的 fine-tuned checkpoint、memorized images 與 SSCD checkpoint 也沒有一致的資產授權說明。 | 不要直接複製或再散布作者程式與資產；可依論文重新實作，並另外審核 Stable Diffusion、LAION、SSCD 與測試影像的條款。 |
+| Diffusion Attribution Score（DAS） | [官方 repository](https://github.com/Jinxu-Lin/DAS) 沒有 LICENSE。README 說明其基於 D-TRAK，但上游 MIT 不會自動授權 DAS 作者新增的部分。 | 可使用有 MIT 授權的 D-TRAK 作為基礎，或依 DAS 論文自行重寫；不要直接搬用 DAS repository。 |
+| Diffusion Posterior Sampling（DPS）官方實作 | [官方 repository](https://github.com/DPS2022/diffusion-posterior-sampling) 沒有 LICENSE，所連結的 FFHQ／ImageNet checkpoint 亦未提供一致的獨立權重授權。 | 若只需要 measurement residual 或 data consistency，可自行實作；MRI 任務可改用 Apache-2.0 的 score-MRI。 |
+| HalluGen／SHAFE | [官方 LICENSE](https://github.com/edshkim98/HalluGen/blob/master/LICENSE) 使用 MIT 文字，但仍含 `<<<<<<<`、`=======`、`>>>>>>>` merge markers，且 copyright 在 OpenAI 2021 與 Seunghoi Kim 2025 之間衝突。Repository 也未清楚提供 HalluGen dataset、diffusion weight 或 detector checkpoint 的獨立授權。 | 視為「預期採 MIT、但目前尚未完成授權清理」。等待維護者修正 LICENSE 或取得書面確認後再使用。其 [SAM-Med2D 依賴為 Apache-2.0](https://github.com/openmedlab/SAM-Med2D)，但不能補足 HalluGen 自身的授權瑕疵。 |
+
+### 明確的非商用資源
+
+目前與文件方法直接相關、且明確採非商用條款的資源主要如下：
+
+- I2AM 的範例依賴 [StableVITON：CC BY-NC-SA 4.0](https://github.com/rlawjdghek/StableVITON) 與 [VITON-HD：CC BY-NC 4.0](https://github.com/shadow2496/VITON-HD)。它們可在遵守署名、相同方式分享等條件下作非商用研究，但不能補足 I2AM repository 自身缺少 LICENSE 的問題；VITON-HD 資料也明確標示僅供研究用途。
+- Bayesian MRI 的[論文文字與圖片](https://onlinelibrary.wiley.com/doi/full/10.1002/mrm.29624)採 Creative Commons Attribution-NonCommercial。這只授權文章內容，不代表 SPRECO 程式、Hugging Face checkpoint 或 Zenodo 模型／資料都採相同授權。
+- 非商用限制不符合 OSI 對 open source 的定義；真正的開源軟體授權必須允許商業使用。參考 [Open Source Initiative FAQ](https://opensource.org/faq)。
+
+### Stable Diffusion 權重的醫療用途限制
+
+Diffusion Explainer、DAAM 與 Attend-and-Excite 的程式雖然採 MIT，但常用的 [Stable Diffusion v1.4 checkpoint](https://huggingface.co/CompVis/stable-diffusion-v1-4) 採 CreativeML OpenRAIL-M。該授權允許多數商業使用與再散布，但帶有用途限制，因此不屬於無使用領域限制的 OSI 開源授權。
+
+[CreativeML OpenRAIL-M 正式授權](https://huggingface.co/spaces/CompVis/stable-diffusion-license/raw/main/license.txt)明確禁止使用模型或其衍生模型提供醫療建議及醫療結果解讀。此限制不會因使用者是學術機構或專案為非商用而消失。
+
+因此在醫療影像解釋專案中：
+
+- 可以使用這些 MIT 工具的程式架構，但臨床解釋功能應改接自行訓練、且權重與資料授權明確相容的模型。
+- 若僅將 Stable Diffusion 用於非臨床教學、介面展示或一般生成研究，也仍須保留 OpenRAIL-M 的授權、使用限制與相關通知。
+- 不應把整個包含 OpenRAIL-M 權重的發行包標示成「全部 MIT」或「全部 Apache-2.0」。
+
+### 建議的開源發布方式
+
+1. 自行撰寫的核心程式可採 Apache-2.0；相較 MIT，它另外提供明確的專利授權條款。若專案希望條款更精簡，也可選 MIT。
+2. 優先採用 Captum、SHAP、Diffusion Explainer、DAAM、Attend-and-Excite、TCAV、D-TRAK、SPRECO／score-MRI 與 Favero 程式等已有明確授權的元件。
+3. Hallucination Index、measurement residual、posterior variance、prototype 與評估組合採 clean-room implementation。
+4. 將沒有 LICENSE 或授權有瑕疵的 HalluGen、I2AM、DF-RISE／DF-CAM、memorization 與 DAS 排除，或做成未附原始碼及權重的選配介面，直到取得作者許可。
+5. 不在 repository 中直接放置醫療資料、外部 checkpoint 或預訓練權重；提供下載腳本或設定欄位，要求使用者自行接受各資產條款。
+6. 新增 `THIRD_PARTY_NOTICES.md` 或 dependency license manifest，逐一記錄元件版本、來源 URL、程式授權、模型授權及資料集條款。
+7. 對醫療資料另外保存 DUA、病患同意、去識別化、研究用途、跨境與再散布條件；開源軟體授權不能取代這些要求。
+
+### 判定原則與免責
+
+依[經濟部智慧財產局說明](https://www.tipo.gov.tw/tw/copyright/692-13618.html)，著作權保護程式的具體表達，不保護思想、程序、系統、操作方法、概念或原理。因此，從著作權角度，依論文獨立實作方法通常可以為自己的程式選擇開源授權；但仍須另外處理專利、契約、商標、資料權利及醫療法規。
+
+依 [GitHub 官方授權說明](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository)，公開 repository 若沒有 LICENSE，預設著作權仍然適用，其他人不能因此任意重製、散布或製作衍生作品。公開可下載、公開可 fork 與非商用使用，都不等於取得上述權利。
+
+本節是工程與授權風險初篩，不構成正式法律意見；準備公開發行、臨床部署或商業化前，應由熟悉軟體、AI 模型、醫療資料與所在地法律的專業人士進行最終審查。
