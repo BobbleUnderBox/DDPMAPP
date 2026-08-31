@@ -29,11 +29,7 @@ Luo 等人的 Bayesian MRI reconstruction 由 posterior distribution 取樣，�
 
 回答：模型在哪些區域對重建結果沒有把握？
 
-### DynamicDPS：降低幻覺，但不是 XAI
 
-DynamicDPS 在反向擴散過程加入資料一致性限制，使生成結果持續與實際量測資料比較。它在低場 MRI 實驗中降低幻覺，並使關鍵組織的體積估計改善超過15%。
-
-限制：它屬於「幻覺緩解方法」，本身不會完整解釋模型為何產生某個結構。較好的做法是：DynamicDPS 負責降低幻覺，SHAFE／residual map 負責顯示可疑區域。
 
 ## 組合拳
 
