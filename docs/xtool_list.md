@@ -1,6 +1,6 @@
 Posterior uncertainty
-Grad-base method  需要開源權重嗎? 
-SHAP 是否有用於圖像的 SHAP
+Grad-base method
+SHAP
 Measurement-consistency residual、posterior variance、credible interval 統計數學方法 
 Class-conditional counter fact
 diffusion explainer 去噪過程
