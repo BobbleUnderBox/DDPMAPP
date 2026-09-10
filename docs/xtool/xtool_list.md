@@ -3,9 +3,7 @@
 ## 實作清單
 
 - [ ] 不確定性
-
 - [ ] SHAP
-
 - [ ] Grad-base method
 - [ ] Class-conditional counter fact
 - [ ] diffusion explainer 去噪過程

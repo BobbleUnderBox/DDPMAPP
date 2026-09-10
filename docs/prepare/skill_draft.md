@@ -2,12 +2,12 @@
 
 ## codex 用 agent.md
 
-說明專案目標、技術架構、目錄架構，並加註此三項要和 README.md 同步。
+標註每次要記得查看那些主要檔案、做啥要查看那些檔案。
 
 提到有哪些 basic skill。
 指名技能進入點在哪、skill 型式規範在哪；並提到技能進入點檔案列為必讀，建立skill、修改 skill 時候 skill 型式規範必讀。
 
-agent.md 更新時維持在一千字以下。
+agent.md 更新時維持在一千五百字以下。
 
 ## basic skill
 
