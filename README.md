@@ -18,6 +18,7 @@
 
 ## 大方向流程
 
+```
 選擇模型與設定推論參數
     ↓
 選擇模型適用的範例
@@ -27,7 +28,7 @@
 進行不確定度分析
     ↓
 查看結果與產生報表
-
+```
 
 ## 前端
 
@@ -46,10 +47,10 @@ React
           └─ CPU post-processing / visualization worker
 ```
 
-- **FastAPI：**模型、範例影像的取得；參數與推論、不確定度分析、整體流程的建立、取得、修改、刪除。
-- **PostgreSQL：**保存模型與工具版本、範例影像 metadata；參數與推論、不確定度分析、整體報表內容與關係。
-- **Object Storage：**保存原始影像、模型輸出、共用遮罩與視覺化結果；資料庫只存 reference 與 hash。
-- **Modal：**負責非同步推論與後處理。各模型使用獨立環境，將最終結果轉成共用遮罩後，由 CPU worker 統計與產生三種視覺化。
+- **FastAPI：** 模型、範例影像的取得、模型參數的設定；推論、不確定度分析、整體流程的建立、取得、修改、刪除。
+- **PostgreSQL：** 保存模型與工具版本、範例影像 metadata；推論、不確定度分析、流程內容。
+- **Object Storage：** 保存原始影像、模型輸出、共用遮罩與視覺化結果；資料庫只存 reference 與 hash。
+- **Modal：** 負責非同步推論與後處理。各模型使用獨立環境，將最終結果轉成共用遮罩後，由 CPU worker 統計與產生三種視覺化。
 
 Control plane 使用 Python 3.12、FastAPI、Pydantic v2、SQLAlchemy 2、Alembic、psycopg 3。
 
