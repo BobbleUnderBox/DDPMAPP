@@ -58,8 +58,8 @@ Control plane 使用 Python 3.12、FastAPI、Pydantic v2、SQLAlchemy 2、Alembi
 
 專案在 `docs` 下維護以下文件：
 
-- `framework.md`：記錄目錄架構與各文件、檔案的功能。
-- `api.md`：記錄前後端介面。
+- [`framework.md`](docs\framework.md)：記錄目錄架構與各文件、檔案的功能。
+- [`api.md`](docs\api.md)：記錄前後端介面。
 - [model_list.md](docs/model/model_list.md)：模型清單與導入進度。
 - [xtool_list.md](docs/xtool/xtool_list.md)：工具清單與實作進度；僅交付不確定度視覺化。
 - [devlog.md](docs/devlog.md)：記錄開發、測試、前後端技術與套件
