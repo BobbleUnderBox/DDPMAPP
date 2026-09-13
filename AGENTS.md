@@ -17,10 +17,11 @@
 ## 專案重要檔案與用途
 
 - [`README.md`](README.md)：定義目前交付範圍、使用者情境、主要功能、大方向流程與驗收條件；執行一般開發任務時優先以此為準。
-- [`docs/project_goal.md`](docs/project_goal.md)：記錄專案的長期產品目標、完整可解釋性使用情境與最終報表內容；不要將尚未交付的長期規劃當成目前需求。
-- [`docs/framework.md`](docs/framework.md)：說明前端、後端、資料庫、物件儲存、Modal workers 的技術架構、目錄分工、部署位置與任務接續規則。
-- [`docs/api.md`](docs/api.md)：定義前後端共用的資料概念、流程／run／analyse／報表的操作、狀態、取消、刪除與重新執行規則；API 實作需遵循此行為契約。
-- [`docs/model/model_list.md`](docs/model/model_list.md)：維護目前預計支援及導入中的模型清單，並記錄各模型需要確認的安全性、實作限制與來源。
-- [`docs/xtool/xtool_list.md`](docs/xtool/xtool_list.md)：維護可解釋性／不確定度工具的規劃與實作清單，並記錄安全性、實作限制與來源等待確認事項。
-- [`docs/devlog.md`](docs/devlog.md)：記錄開發工具、測試工具與開發流程，供追蹤實作及驗證方式。
-- [`docs/skill_index.md`](docs/skill_index.md)：索引專案中的 skill，說明 skill frontmatter 的格式，以及如何撰寫名稱、觸發條件與適用範圍。
+- [`project_goal.md`](docs/project_goal.md)：記錄專案的長期產品目標、完整可解釋性使用情境與最終報表內容；不要將尚未交付的長期規劃當成目前需求。
+- [`framework.md`](docs/framework.md)：說明前端、後端、資料庫、物件儲存、Modal workers 的技術架構、目錄分工、部署位置與任務接續規則。
+- [`api.md`](docs/api.md)：定義前後端共用的資料概念、流程／run／analyse／報表的操作、狀態、取消、刪除與重新執行規則；API 實作需遵循此行為契約。
+- [`model_list.md`](docs/model/model_list.md)：維護目前預計支援及導入中的模型清單，並記錄各模型需要確認的安全性、實作限制與來源。
+- [`xtool_list.md`](docs/xtool/xtool_list.md)：維護可解釋性／不確定度工具的規劃與實作清單，並記錄安全性、實作限制與來源等待確認事項。
+- [`devlog.md`](docs/devlog.md)：記錄開發工具、測試工具與開發流程，供追蹤實作及驗證方式。
+- [`skill_index.md`](docs/skill_index.md)：索引專案中的 skill，說明 skill frontmatter 的格式，以及如何撰寫名稱、觸發條件與適用範圍。
+- [`skill_format.md`](docs\skill_format.md):創建、維護 skill 時要遵循的檔案，定義了 skill 的格式。
