@@ -23,5 +23,5 @@
 - [`model_list.md`](docs/model/model_list.md)：維護目前預計支援及導入中的模型清單，並記錄各模型需要確認的安全性、實作限制與來源。
 - [`xtool_list.md`](docs/xtool/xtool_list.md)：維護可解釋性／不確定度工具的規劃與實作清單，並記錄安全性、實作限制與來源等待確認事項。
 - [`devlog.md`](docs/devlog.md)：記錄開發工具、測試工具與開發流程，供追蹤實作及驗證方式。
+- [`code_style.md`](docs/code_style.md)：定義前後端、worker、資料契約、測試與文件的共用程式風格基準。
 - [`skill_index.md`](docs/skill_index.md)：索引專案中的 skill，說明 skill frontmatter 的格式，以及如何撰寫名稱、觸發條件與適用範圍。
-- [`skill_format.md`](docs\skill_format.md):創建、維護 skill 時要遵循的檔案，定義了 skill 的格式。

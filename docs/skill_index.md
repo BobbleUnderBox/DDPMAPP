@@ -19,3 +19,5 @@ location:"指向該技能在專案中的實際位置"
 優良範例：「當使用者提及 DDPM 文獻統合、注意力權重矩陣 (Attention weights) 特徵提取、Latent trajectory 平滑化，或要求生成 PyTorch Hook 腳本時使用。涵蓋 U-Net 與 DiT 架構的可解釋性任務」。
 
 ## 技能列表
+
+- [Code Review](../.agents/skills/code-review/SKILL.md)：審查新增或修改的程式碼，依專案風格、架構/API 契約與一般品質規範回報問題。

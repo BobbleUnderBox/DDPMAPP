@@ -47,4 +47,5 @@
 - [model_list.md](docs/model/model_list.md)：模型清單與導入進度。
 - [xtool_list.md](docs/xtool/xtool_list.md)：工具清單與實作進度；僅交付不確定度視覺化。
 - [devlog.md](docs/devlog.md)：記錄開發、測試、前後端技術與套件
+- [code_style.md](docs/code_style.md)：共用程式風格、分層、資料契約、測試與文件規範。
 - [uncertainty.md](docs/xtool/uncertainty.md)：紀錄專案所採用的可解釋(不確定性)方法。
