@@ -30,29 +30,13 @@
 查看結果與產生報表
 ```
 
-## 前端
+## 驗收條件與產品目標驗證
 
-- 語言與框架：TypeScript（strict）＋ React ＋ Vite
-- UI：Tailwind CSS ＋ shadcn/ui
-
-## 後端
-
-```text
-React
-  → FastAPI control plane
-      ├─ PostgreSQL + JSONB
-      ├─ S3-compatible object storage
-      └─ Modal dispatcher
-          ├─ model-specific GPU workers
-          └─ CPU post-processing / visualization worker
-```
-
-- **FastAPI：** 模型、範例影像的取得、模型參數的設定；推論、不確定度分析、整體流程的建立、取得、修改、刪除。
-- **PostgreSQL：** 保存模型與工具版本、範例影像 metadata；推論、不確定度分析、流程內容。
-- **Object Storage：** 保存原始影像、模型輸出、共用遮罩與視覺化結果；資料庫只存 reference 與 hash。
-- **Modal：** 負責非同步推論與後處理。各模型使用獨立環境，將最終結果轉成共用遮罩後，由 CPU worker 統計與產生三種視覺化。
-
-Control plane 使用 Python 3.12、FastAPI、Pydantic v2、SQLAlchemy 2、Alembic、psycopg 3。
+- [model_list](model/model_list.md) 中五種模型（DermoSegDiff、AutoDDPM、cDAL、CCDM、THOR）皆能成功完成推論。
+- 同一張影像可透過不同 seed 重複推論，保留每次最終輸出
+- 在 analyses 步驟中重複推論的輸出能轉成同座標的 `masks[N, H, W]` boolean 遮罩。
+- [不確定度流程設計](xtool/uncertainty.md)中的三種視覺化皆能使用同一組遮罩產生結果：像素涵蓋比例熱圖、輪廓疊圖、CDclust 分群與代表圖及群比例。
+- 前端可選擇模型與適用範例；管理流程、推論與分析，查看分析結果，並產生與查看流程報表。操作範圍依 API 定義。
 
 ## 規範文件
 

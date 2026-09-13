@@ -1,18 +1,31 @@
 # 整體專案架構
 
-## 服務架構流程
+## 技術架構
 
+### 前端
+
+- 語言與框架：TypeScript（strict）＋ React ＋ Vite
+- UI：Tailwind CSS ＋ shadcn/ui
+- 常用套件：React Router、TanStack Query、React Hook Form、Zod
+
+### 後端
+
+```text
+React
+  → FastAPI control plane
+      ├─ PostgreSQL + JSONB
+      ├─ S3-compatible object storage
+      └─ Modal dispatcher
+          ├─ model-specific GPU workers
+          └─ CPU post-processing / visualization worker
 ```
-選擇模型與設定推論參數
-    ↓
-選擇模型適用的範例
-    ↓
-開始推論
-    ↓
-進行不確定度分析    
-    ↓
-查看結果與產生報表   
-```
+
+- **FastAPI：** 保存流程設定，管理流程、run 與 analyse
+- **PostgreSQL：** 保存模型與工具版本、範例影像 metadata；參數與推論、不確定度分析、整體報表內容與關係。
+- **Object Storage：** 保存原始影像、模型輸出、共用遮罩與視覺化結果；針對影像與成果檔案，資料庫只存 reference 與 hash。
+- **Modal：** 模型 worker 保存每次完整推論的原始輸出；CPU 分析 worker 依模型規則轉成共用遮罩，再統計並產生三種視覺化。
+
+Control plane 使用 Python 3.12、FastAPI、Pydantic v2、SQLAlchemy 2、Alembic、psycopg 3。
 
 ## 目錄架構
 
