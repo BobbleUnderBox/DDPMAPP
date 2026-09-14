@@ -1,0 +1,7 @@
+interface:
+  display_name: "Unit Test"
+  short_description: "Test code changes and clean up temporary artifacts"
+  default_prompt: "Use $unit-test to write and run tests for my changes, check affected existing behavior, and clean up temporary test artifacts."
+
+policy:
+  allow_implicit_invocation: true
