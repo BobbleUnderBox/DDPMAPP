@@ -22,5 +22,6 @@
 - [`api.md`](docs/api.md)：定義前後端共用的資料概念、流程／run／analyse／報表的操作、狀態、取消、刪除與重新執行規則；API 實作需遵循此行為契約。
 - [`model_list.md`](docs/model/model_list.md)：維護目前預計支援及導入中的模型清單，並記錄各模型需要確認的安全性、實作限制與來源。
 - [`xtool_list.md`](docs/xtool/xtool_list.md)：維護可解釋性／不確定度工具的規劃與實作清單，並記錄安全性、實作限制與來源等待確認事項。
-- [`devlog.md`](docs/devlog.md)：記錄開發工具、測試工具、開發流程及 Git 命名規範，供追蹤實作、驗證方式與遵循 commit／branch 命名約定。
+- [`devlog.md`](docs/devlog.md)：記錄開發工具、測試工具與開發流程，供追蹤實作與驗證方式。
+- [`git_conventions.md`](docs/git_conventions.md)：定義 Git commit message 與 branch 命名規範。
 - [`code_style.md`](docs/code_style.md)：定義前後端、worker、資料契約、測試與文件的共用程式風格基準。

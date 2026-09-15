@@ -1,6 +1,6 @@
 # XDDPMAPP
 
-本文件定義交付範圍；長期規劃另見[最終目標](docs/project_goal.md)，開發與測試工具、開發流程及 Git 命名規範見[開發日誌](docs/devlog.md)。
+本文件定義交付範圍；長期規劃另見[最終目標](docs/project_goal.md)，開發與測試工具及開發流程見[開發日誌](docs/devlog.md)，Git 命名規範見[Git 命名規範](docs/git_conventions.md)。
 
 ## 使用者情境
 
@@ -46,6 +46,7 @@
 - [`api.md`](docs/api.md)：記錄前後端介面。
 - [model_list.md](docs/model/model_list.md)：模型清單與導入進度。
 - [xtool_list.md](docs/xtool/xtool_list.md)：工具清單與實作進度；僅交付不確定度視覺化。
-- [devlog.md](docs/devlog.md)：記錄開發與測試工具、開發流程，以及 commit message 與 branch 命名規範。
+- [devlog.md](docs/devlog.md)：記錄開發與測試工具及開發流程。
+- [git_conventions.md](docs/git_conventions.md)：定義 commit message 與 branch 命名規範。
 - [code_style.md](docs/code_style.md)：共用程式風格、分層、資料契約、測試與文件規範。
 - [uncertainty.md](docs/xtool/uncertainty.md)：紀錄專案所採用的可解釋(不確定性)方法。
