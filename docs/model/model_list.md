@@ -2,11 +2,11 @@
 
 ## model 清單
 
-- [ ] DermoSegDiff
-- [ ] AutoDDPM
-- [ ] cDAL
-- [ ] CCDM
-- [ ] THOR
+- [x] DermoSegDiff
+- [x] AutoDDPM
+- [x] cDAL
+- [x] CCDM
+- [x] THOR
 
 ## 要確認的細節
 

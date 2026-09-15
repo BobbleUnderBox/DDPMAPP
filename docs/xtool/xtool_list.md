@@ -2,7 +2,7 @@
 
 ## 實作清單
 
-- [ ] 不確定性
+- [x] 不確定性
 - [ ] SHAP
 - [ ] Grad-base method
 - [ ] Class-conditional counter fact
