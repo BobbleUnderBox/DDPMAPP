@@ -1,0 +1,7 @@
+interface:
+  display_name: "Refactoring & Cleanup"
+  short_description: "安全盤點、分批重構並驗證 XDDPMAPP 技術債"
+  default_prompt: "使用 $refactoring-cleanup 盤點並安全清理這個專案的技術債。"
+
+policy:
+  allow_implicit_invocation: true

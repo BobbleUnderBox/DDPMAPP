@@ -1,0 +1,7 @@
+interface:
+  display_name: "Documentation"
+  short_description: "定期檢查重要文件與技能的內容、長度、漂移與一致性問題"
+  default_prompt: "使用 $documentation 檢查本專案的重要文件與技能內容，提出不超過五項精簡維護建議。"
+
+policy:
+  allow_implicit_invocation: true
